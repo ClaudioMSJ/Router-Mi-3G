@@ -1,0 +1,25 @@
+- opkg update
+
+- opkg install zerotier
+
+- zerotier-one -d
+
+- zerotier-cli info
+
+- zerotier-cli join id_aqui
+
+- ifconfig
+
+- iptables -I INPUT -i zt5u46loyp -j ACCEPT
+
+- iptables -t nat -A PREROUTING -d 172.28.28.1 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.1:80
+
+Advanced Settings → Customization → Scripts → Run After Router Started
+
+- /opt/bin/zerotier-one -d
+
+Advanced Settings → Customization → Scripts → Run After Firewall Rules Restarted
+
+- iptables -I INPUT -i zt5u46loyp -j ACCEPT
+
+- iptables -t nat -A PREROUTING -d 172.28.28.1 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.1:80

@@ -1,0 +1,28 @@
+﻿- opkg update
+
+- opkg install dnscrypt-proxy2
+
+- Colocar arquivos nesta pasta " /opt/etc/dnscrypt-proxy.toml "
+
+- /opt/etc/init.d/S09dnscrypt-proxy2 start
+
+Advanced Settings → LAN → DHCP Server → Custom Configuration File "dnsmasq.conf"
+
+no-resolv
+server=127.0.0.1#65053
+addn-hosts=/opt/tmp/block.hosts
+
+- Na interface da web do roteador, acesse:
+WAN - desative o recebimento automático de servidores DNS e registre 127.0.0.1 como um provedor DNS
+
+- Servidor LAN-DHCP. Para clientes na rede local, especifique o DNS com o endereço do roteador: 192.168.1.1
+
+- Na interface da web do roteador, vá para
+Personalização-Scripts- Executar após reiniciar as regras do firewall:
+
+Insira:
+### Redirect DNS
+iptables -t nat -I PREROUTING -i br0 -p udp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)
+iptables -t nat -I PREROUTING -i br0 -p tcp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)
+
+- reiniciar

@@ -1,0 +1,8 @@
+﻿Advanced Settings → Customization → Scripts → Run After Router Started
+
+- chmod +x /opt/tmp/adblock_update.sh
+- /opt/tmp/adblock_update.sh
+
+Advanced Settings → LAN → DHCP Server → Custom Configuration File "dnsmasq.conf"
+
+- addn-hosts=/opt/tmp/block.hosts

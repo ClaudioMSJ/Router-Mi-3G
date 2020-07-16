@@ -1,0 +1,5 @@
+Administração > Ative "Cron Daemon (Scheduler)?"
+
+Agora clique em > Scheduler tasks (Crontab)]
+
+- 0 6 * * * reboot

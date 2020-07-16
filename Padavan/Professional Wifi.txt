@@ -1,0 +1,23 @@
+﻿Avançado” ➜ “Aplicativo USB” ➜ “Desativar interface USB3 (somente USB2)?” ➜ Sim (menos interferência em 2.4GHz)
+
+Wireless 2.4 GHZ
+
+- Modo de rede sem fio: N Only
+
+- Region Code: Europe (Channel 1-13)
+
+Wireless 5 GHZ
+
+- Modo de rede sem fio: N /AC Mixed
+
+- Region Code: Europa (canais 36,40, 44.48)
+
+Na Aba Profissional 2.4 e 5 GHZ
+
+- Ativar o WMM APSD ? : Desativar
+
+- Ativar o Greenfield? : Ativar
+
+- Ativar a agregação de pacotes ? : Desativar
+
+- Ativar o TX Bursting ? : Desativar
