@@ -1,3 +1,4 @@
+rm padavan.sh
 opkg update
 
 #!/bin/bash
