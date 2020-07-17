@@ -110,6 +110,7 @@ echo "================================================"
 
        8)
          echo "exluindo..."
+         rm padavan.sh
          sleep 2
          clear;
          exit;
