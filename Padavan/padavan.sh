@@ -12,7 +12,6 @@ clear
 echo "================================================"
 echo "Mini Script Padavan"
 echo ""
-echo ""
 echo "1) AdGuard Home"
 echo ""
 echo "2) AdBlock"
@@ -25,9 +24,9 @@ echo "5) Limpando programas defeituosos "
 echo ""
 echo "6) Corrigir erros"
 echo ""
-echo "7) Sair do programa"
+echo "7) Exit Script"
 echo ""
-echo "8) Sair e Excluir Script"
+echo "8) Exit and Delete Script"
 echo ""
 echo "================================================"
 
@@ -100,7 +99,7 @@ echo "================================================"
 echo "================================================"
  ;;
        7)
-         echo "saindo..."
+         echo "Exiting..."
          sleep 2
          clear;
          exit;
@@ -109,7 +108,7 @@ echo "================================================"
  ;;
 
        8)
-         echo "exluindo..."
+         echo "Deleting..."
          rm padavan.sh
          sleep 2
          clear;
