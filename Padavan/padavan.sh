@@ -1,3 +1,5 @@
+opkg update
+
 #!/bin/bash
 x="padavan"
 menu ()
@@ -15,8 +17,7 @@ echo "2) AdBlock"
 echo ""
 echo "3) DnsCrypt"
 echo ""
-echo "4) Instalar dependências"
-echo ""
+echo "4) Stubby
 echo "5) Limpando programas defeituosos "
 echo ""
 echo "6) Corrigir erros"
@@ -67,8 +68,16 @@ echo "================================================"
 echo "================================================"
 ;;
     4)
-       echo "Iniciando o processo..."
-       apt-get -f install
+       opkg install stubby
+       
+       wget -O /opt/etc/stubby/stubby.yml https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/stubby/stubby.yml
+
+       wget -O /opt/etc/init.d/S48stubby https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/init.d/S48stubby
+
+       chmod +x /opt/etc/init.d/S48stubby
+
+       /opt/etc/init.d/S48stubby start
+
        sleep 5
 echo "================================================"
 ;;
