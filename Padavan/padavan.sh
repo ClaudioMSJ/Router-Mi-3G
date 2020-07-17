@@ -1,7 +1,6 @@
 #!/bin/bash
 
 opkg update
-echo "Carregando Script..."
 sleep 5
 
 x="padavan"
@@ -15,7 +14,7 @@ echo "Mini Script Padavan"
 echo ""
 echo ""
 echo "1) AdGuard Home"
-echo""
+echo ""
 echo "2) AdBlock"
 echo ""
 echo "3) DnsCrypt"
