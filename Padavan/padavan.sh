@@ -1,7 +1,7 @@
+#!/bin/bash
 opkg update
 sleep 5
 
-#!/bin/bash
 x="padavan"
 menu ()
 {
