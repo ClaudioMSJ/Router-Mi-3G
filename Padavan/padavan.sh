@@ -1,5 +1,5 @@
-rm padavan.sh
 opkg update
+sleep 5
 
 #!/bin/bash
 x="padavan"
