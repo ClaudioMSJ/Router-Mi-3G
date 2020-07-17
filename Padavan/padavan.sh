@@ -43,7 +43,7 @@ case "$x" in
       
       opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk
       
-      rm adguardhome_0.102.0-1_mipsel-3.4.ipk
+      
       
       /opt/etc/init.d/S99adguardhome start
       
