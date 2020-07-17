@@ -1,4 +1,5 @@
 #!/bin/bash
+
 opkg update
 sleep 5
 
@@ -18,7 +19,8 @@ echo "2) AdBlock"
 echo ""
 echo "3) DnsCrypt"
 echo ""
-echo "4) Stubby
+echo "4) Stubby"
+echo ""
 echo "5) Limpando programas defeituosos "
 echo ""
 echo "6) Corrigir erros"
