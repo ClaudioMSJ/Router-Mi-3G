@@ -52,13 +52,13 @@ case "$x" in
 echo "================================================"
 ;;
     2)
-    wget -O /opt/tmp/adblock_black.list https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_black.list
+    wget -O /opt/tmp/adblock_black.list https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_black.list ;
     
-    wget -O /opt/tmp/adblock_update.sh https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_update.sh
+    wget -O /opt/tmp/adblock_update.sh https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_update.sh ;
     
-    wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/Arquivos%20AdBlock/adblock_white.list
+    wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/Arquivos%20AdBlock/adblock_white.list ;
     
-      sleep 5
+    sleep 5
 echo "================================================"
 ;;
    3)
@@ -72,15 +72,15 @@ echo "================================================"
 echo "================================================"
 ;;
     4)
-       opkg install stubby
+       opkg install stubby ;
        
-       wget -O /opt/etc/stubby/stubby.yml https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/stubby/stubby.yml
+       wget -O /opt/etc/stubby/stubby.yml https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/stubby/stubby.yml ;
 
-       wget -O /opt/etc/init.d/S48stubby https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/init.d/S48stubby
+       wget -O /opt/etc/init.d/S48stubby https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/init.d/S48stubby ;
+       
+       chmod +x /opt/etc/init.d/S48stubby ;
 
-       chmod +x /opt/etc/init.d/S48stubby
-
-       /opt/etc/init.d/S48stubby start
+       /opt/etc/init.d/S48stubby start ;
 
        sleep 5
 echo "================================================"
