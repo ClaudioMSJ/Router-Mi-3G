@@ -1,6 +1,7 @@
 #!/bin/bash
 
 opkg update
+echo "Carregando Script..."
 sleep 5
 
 x="padavan"
@@ -10,7 +11,7 @@ while true $x != "padavan"
 do
 clear
 echo "================================================"
-echo "Mini Script"
+echo "Mini Script Padavan"
 echo ""
 echo ""
 echo "1) AdGuard Home"
@@ -26,6 +27,8 @@ echo ""
 echo "6) Corrigir erros"
 echo ""
 echo "7) Sair do programa"
+echo ""
+echo "8) Sair e Excluir Script"
 echo ""
 echo "================================================"
 
@@ -99,6 +102,16 @@ echo "================================================"
  ;;
        7)
          echo "saindo..."
+         sleep 2
+         clear;
+         exit;
+echo "================================================"
+;;
+
+echo "================================================"
+ ;;
+       8)
+         echo "Excluindo..."
          sleep 2
          clear;
          exit;
