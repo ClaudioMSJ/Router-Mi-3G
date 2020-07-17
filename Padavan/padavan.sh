@@ -39,7 +39,7 @@ case "$x" in
 
 
     1)
-      wget https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/adguardhome_0.102.0-1_mipsel-3.4.ipk
+      wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome_0.102.0-1_mipsel-3.4.ipk
       
       opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk
       
