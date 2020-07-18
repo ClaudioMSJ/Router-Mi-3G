@@ -61,9 +61,9 @@ echo "8) Exit and Delete Script"
 echo ""
 echo "================================================"
 
-echo "Digite a opção desejada:"
+echo "Enter Number:"
 read x
-echo "Opção informada ($x)"
+echo "Number Selected ($x)"
 echo "================================================"
 
 case "$x" in
@@ -163,7 +163,7 @@ echo ""
 ;;
 
 *)
-        echo "Opção inválida!"
+        echo "Invalid Number!"
 esac
 
 read -p "Press enter to back..."
