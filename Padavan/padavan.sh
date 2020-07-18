@@ -100,6 +100,8 @@ else
     printf '\naddn-hosts=/opt/tmp/block.hosts' >> /etc/storage/dnsmasq/dnsmasq.conf
     printf '\nchmod +x /opt/tmp/adblock_update.sh
 /opt/tmp/adblock_update.sh' >> /etc/storage/started_script.sh
+    chmod +x /opt/tmp/adblock_update.sh ;
+    /opt/tmp/adblock_update.sh ;
     fi
  
 echo "================================================"
