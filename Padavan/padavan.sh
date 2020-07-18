@@ -40,9 +40,16 @@ echo -e "3) DNSCrypt - \e[31m Status (off) \e[0m"
 fi
 
 echo ""
-echo "4) Stubby"
+FILE= /opt/etc/init.d/S48stubby
+if [ -f "$FILE" ]; 
+then
+echo -e "4) Stubby - \e[32m Status (on) \e[0m" 
+else 
+echo -e "4) Stubby - \e[31m Status (off) \e[0m"
+fi
+
 echo ""
-echo "5) Limpando programas defeituosos "
+echo "5) Periodic Reboot At 06 am "
 echo ""
 echo "6) Corrigir erros"
 echo ""
@@ -105,22 +112,24 @@ fi
 echo "================================================"
 ;;
     4)
-       opkg install stubby ;
-       
+     FILE=/opt/etc/init.d/S48stubby
+if [ -f "$FILE" ]; 
+then
+    echo ""
+    echo -e "\e[32m Already Installed... \e[0m"
+else
+       opkg install stubby ;       
        wget -O /opt/etc/stubby/stubby.yml https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/stubby/stubby.yml ;
-
-       wget -O /opt/etc/init.d/S48stubby https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/init.d/S48stubby ;
-       
+       wget -O /opt/etc/init.d/S48stubby https://raw.githubusercontent.com/blackcofee/guides/master/opt/etc/init.d/S48stubby ;       
        chmod +x /opt/etc/init.d/S48stubby ;
-
        /opt/etc/init.d/S48stubby start ;
+fi
        
 echo "================================================"
 ;;
      5)
-       echo "Corrigindo erros..."
-       apt-get autoremove
-       sleep 5
+     printf '\n0 6 * * * reboot' >> /admin ;
+    
 echo "================================================"
 ;;
     6)
