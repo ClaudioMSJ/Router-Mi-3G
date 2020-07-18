@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 opkg update
 sleep 5
