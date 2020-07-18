@@ -94,10 +94,12 @@ then
     echo ""
     echo -e "\e[32m Already Installed... \e[0m"
 else 
-    wget -O /opt/tmp/adblock_black.list https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_black.list ;    
-    wget -O /opt/tmp/adblock_update.sh https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_update.sh ;    
-    wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/Arquivos%20AdBlock/adblock_white.list ;
+    wget -O /opt/tmp/adblock_black.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_black.list ;    
+    wget -O /opt/tmp/adblock_update.sh https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_update.sh ;    
+    wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_white.list ;
     printf '\naddn-hosts=/opt/tmp/block.hosts' >> /etc/storage/dnsmasq/dnsmasq.conf
+    printf '\nchmod +x /opt/tmp/adblock_update.sh
+/opt/tmp/adblock_update.sh' >> /etc/storage/dnsmasq/started_script.sh
     fi
  
 echo "================================================"
@@ -110,7 +112,7 @@ then
     echo -e "\e[32m Already Installed... \e[0m"
 else
       opkg install dnscrypt-proxy2 ;      
-      wget -O /opt/etc/dnscrypt-proxy.toml https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/dnscrypt-proxy.toml ;      
+      wget -O /opt/etc/dnscrypt-proxy.toml https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/DNSCrypt/dnscrypt-proxy.toml ;      
       /opt/etc/init.d/S09dnscrypt-proxy2 start ;
       printf '\n### Use dnscrypt-proxy2
 no-resolv
