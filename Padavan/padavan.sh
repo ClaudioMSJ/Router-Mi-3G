@@ -13,18 +13,32 @@ echo "================================================"
 echo "Mini Script Padavan"
 
 echo ""
- FILE=/opt/etc/init.d/S99adguardhome
+FILE=/opt/etc/init.d/S99adguardhome
 if [ -f "$FILE" ]; 
 then
-   echo -e "1) AdGuard Home - \e[32m Status (on) \e[0m" 
+echo -e "1) AdGuard Home - \e[32m Status (on) \e[0m" 
 else 
 echo -e "1) AdGuard Home - \e[31m Status (off) \e[0m"
 fi       
 
 echo ""
-echo "2) AdBlock"
+FILE=/opt/tmp/adblock_update.sh
+if [ -f "$FILE" ]; 
+then
+echo -e "2) AdBlock - \e[32m Status (on) \e[0m" 
+else 
+echo -e "2) AdBlock - \e[31m Status (off) \e[0m"
+fi
+
 echo ""
-echo "3) DnsCrypt"
+FILE=/opt/etc/init.d/S09dnscrypt-proxy2
+if [ -f "$FILE" ]; 
+then
+echo -e "3) DNSCrypt - \e[32m Status (on) \e[0m" 
+else 
+echo -e "3) DNSCrypt - \e[31m Status (off) \e[0m"
+fi
+
 echo ""
 echo "4) Stubby"
 echo ""
@@ -53,35 +67,40 @@ then
     echo -e "\e[32m Already Installed... \e[0m"
    
 else 
-      wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome_0.102.0-1_mipsel-3.4.ipk ;
-      
-      opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk ;
-      
-      rm adguardhome_0.102.0-1_mipsel-3.4.ipk ;
-      
-      /opt/etc/init.d/S99adguardhome start ;
-      
+      wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
+      opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
+      rm adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
+      /opt/etc/init.d/S99adguardhome start ;      
       wget -O /etc/storage/dnsmasq/dnsmasq.conf https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/DNSCrypt/dnsmasq.conf ;
-
 fi       
      
 echo "================================================"
 ;;
     2)
-    wget -O /opt/tmp/adblock_black.list https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_black.list ;
-    
-    wget -O /opt/tmp/adblock_update.sh https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_update.sh ;
-    
+      FILE=/opt/tmp/adblock_update.sh
+if [ -f "$FILE" ]; 
+then
+    echo ""
+    echo -e "\e[32m Already Installed... \e[0m"
+else 
+    wget -O /opt/tmp/adblock_black.list https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_black.list ;    
+    wget -O /opt/tmp/adblock_update.sh https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/Arquivos%20AdBlock/adblock_update.sh ;    
     wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/Arquivos%20AdBlock/adblock_white.list ;
-    
+    fi
+ 
 echo "================================================"
 ;;
    3)
-      opkg install dnscrypt-proxy2
-      
-      wget -O /opt/etc/dnscrypt-proxy.toml https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/dnscrypt-proxy.toml
-      
-      /opt/etc/init.d/S09dnscrypt-proxy2 start
+   FILE=/opt/etc/init.d/S09dnscrypt-proxy2
+if [ -f "$FILE" ]; 
+then
+    echo ""
+    echo -e "\e[32m Already Installed... \e[0m"
+else
+      opkg install dnscrypt-proxy2 ;      
+      wget -O /opt/etc/dnscrypt-proxy.toml https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/dnscrypt-proxy.toml ;      
+      /opt/etc/init.d/S09dnscrypt-proxy2 start ;
+fi      
       
 echo "================================================"
 ;;
