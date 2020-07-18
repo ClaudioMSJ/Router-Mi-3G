@@ -111,6 +111,9 @@ else
       opkg install dnscrypt-proxy2 ;      
       wget -O /opt/etc/dnscrypt-proxy.toml https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/Padavan/dnscrypt-proxy.toml ;      
       /opt/etc/init.d/S09dnscrypt-proxy2 start ;
+      printf '\n### Use dnscrypt-proxy2
+no-resolv
+server=127.0.0.1#65053' >> /etc/storage/dnsmasq/dnsmasq.conf ;
 fi      
       
 echo "================================================"
