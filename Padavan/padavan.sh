@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env ash
 
 opkg update
 sleep 5
