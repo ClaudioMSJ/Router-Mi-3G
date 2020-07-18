@@ -40,16 +40,17 @@ echo -e "3) DNSCrypt - \e[31m Status (off) \e[0m"
 fi
 
 echo ""
-FILE=/opt/etc/init.d/S09dnscrypt-proxy2
+FILE=/opt/etc/init.d/S48stubby
 if [ -f "$FILE" ]; 
 then
 echo -e "4) Stubby - \e[32m Status (on) \e[0m" 
 else 
-echo -e "4) Stubby - \e[31m Status (off) \e[0m"
+echo -e "4) DNSCrypt - \e[31m Status (off) \e[0m"
 fi
 
 echo ""
 echo "5) Periodic Reboot At 06 am "
+
 echo ""
 echo "6) Corrigir erros"
 echo ""
