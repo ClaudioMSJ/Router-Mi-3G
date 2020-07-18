@@ -52,7 +52,8 @@ echo ""
 echo "5) Periodic Reboot At 06 am "
 
 echo ""
-echo "6) Corrigir erros"
+echo "6) Block External DNS"
+
 echo ""
 echo "7) Exit Script"
 echo ""
@@ -83,7 +84,6 @@ else
 fi       
      
 echo "================================================"
-echo ""
 ;;
     2)
       FILE=/opt/tmp/adblock_update.sh
@@ -98,7 +98,6 @@ else
     fi
  
 echo "================================================"
-echo ""
 ;;
    3)
    FILE=/opt/etc/init.d/S09dnscrypt-proxy2
@@ -113,7 +112,6 @@ else
 fi      
       
 echo "================================================"
-echo ""
 ;;
     4)
      FILE=/opt/etc/init.d/S48stubby
@@ -130,7 +128,6 @@ else
 fi
 
 echo "================================================"
-echo ""
 ;;
      5)
      printf '\n0 6 * * * reboot' >> /admin ;
@@ -138,12 +135,11 @@ echo ""
 echo "================================================"
 ;;
     6)
-    echo "Reparando..."
-    dpkg --configure -a
-    sleep 5
+    printf '\n### Redirect DNS
+iptables -t nat -I PREROUTING -i br0 -p udp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)
+iptables -t nat -I PREROUTING -i br0 -p tcp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)' >> /etc/storage/post_iptables_script.sh ;    
 
 echo "================================================"
-echo ""
  ;;
        7)
          echo "Exiting..."
