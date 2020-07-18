@@ -40,7 +40,7 @@ echo -e "3) DNSCrypt - \e[31m Status (off) \e[0m"
 fi
 
 echo ""
-FILE= /opt/etc/init.d/S48stubby
+FILE=/opt/etc/init.d/S48stubby
 if [ -f "$FILE" ]; 
 then
 echo -e "4) Stubby - \e[32m Status (on) \e[0m" 
