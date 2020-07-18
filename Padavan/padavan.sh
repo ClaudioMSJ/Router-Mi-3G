@@ -11,8 +11,16 @@ do
 clear
 echo "================================================"
 echo "Mini Script Padavan"
+
 echo ""
-echo "1) AdGuard Home"
+ FILE=/opt/etc/init.d/S99adguardhome
+if [ -f "$FILE" ]; 
+then
+   echo -e "1) AdGuard Home - \e[32m Status (on) \e[0m" 
+else 
+echo -e "1) AdGuard Home - \e[31m Status (off) \e[0m"
+fi       
+
 echo ""
 echo "2) AdBlock"
 echo ""
@@ -36,7 +44,6 @@ echo "Opção informada ($x)"
 echo "================================================"
 
 case "$x" in
-
 
     1)
       FILE=/opt/etc/init.d/S99adguardhome
