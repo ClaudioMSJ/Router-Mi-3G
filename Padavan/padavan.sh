@@ -56,8 +56,10 @@ echo "6) Block External DNS"
 
 echo ""
 echo "7) Exit Script"
+
 echo ""
 echo "8) Exit and Delete Script"
+
 echo ""
 echo "================================================"
 
@@ -130,7 +132,7 @@ fi
 echo "================================================"
 ;;
      5)
-     printf '\n0 6 * * * reboot' >> /admin ;
+     printf '\n0 6 * * * reboot' >> /etc/storage/cron/crontabs/admin ;
     
 echo "================================================"
 ;;
