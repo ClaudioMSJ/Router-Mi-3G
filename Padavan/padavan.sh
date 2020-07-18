@@ -39,6 +39,13 @@ case "$x" in
 
 
     1)
+      FILE=/opt/etc/init.d/S99adguardhome
+if [ -f "$FILE" ]; 
+then
+    echo ""
+    echo -e "\e[32m Already Installed... \e[0m"
+   
+else 
       wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome_0.102.0-1_mipsel-3.4.ipk ;
       
       opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk ;
@@ -49,8 +56,8 @@ case "$x" in
       
       wget -O /etc/storage/dnsmasq/dnsmasq.conf https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/DNSCrypt/dnsmasq.conf ;
 
-      sleep 5
-
+fi       
+     
 echo "================================================"
 ;;
     2)
@@ -60,7 +67,6 @@ echo "================================================"
     
     wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/Arquivos%20AdBlock/adblock_white.list ;
     
-    sleep 5
 echo "================================================"
 ;;
    3)
@@ -70,7 +76,6 @@ echo "================================================"
       
       /opt/etc/init.d/S09dnscrypt-proxy2 start
       
-      sleep 5
 echo "================================================"
 ;;
     4)
@@ -83,8 +88,7 @@ echo "================================================"
        chmod +x /opt/etc/init.d/S48stubby ;
 
        /opt/etc/init.d/S48stubby start ;
-
-       sleep 5
+       
 echo "================================================"
 ;;
      5)
@@ -102,7 +106,6 @@ echo "================================================"
  ;;
        7)
          echo "Exiting..."
-         sleep 2
          clear;
          exit;
 
@@ -111,8 +114,7 @@ echo "================================================"
 
        8)
          echo "Deleting..."
-         rm padavan.sh
-         sleep 2
+         rm padavan.sh;
          clear;
          exit;
 
@@ -122,6 +124,9 @@ echo "================================================"
 *)
         echo "Opção inválida!"
 esac
+
+read -p "Press enter to back..."
+
 done
 
 }
