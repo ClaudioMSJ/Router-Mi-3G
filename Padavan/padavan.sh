@@ -83,6 +83,7 @@ else
 fi       
      
 echo "================================================"
+echo ""
 ;;
     2)
       FILE=/opt/tmp/adblock_update.sh
@@ -97,6 +98,7 @@ else
     fi
  
 echo "================================================"
+echo ""
 ;;
    3)
    FILE=/opt/etc/init.d/S09dnscrypt-proxy2
@@ -111,6 +113,7 @@ else
 fi      
       
 echo "================================================"
+echo ""
 ;;
     4)
      FILE=/opt/etc/init.d/S48stubby
@@ -125,8 +128,9 @@ else
        chmod +x /opt/etc/init.d/S48stubby ;
        /opt/etc/init.d/S48stubby start ;
 fi
-       
+
 echo "================================================"
+echo ""
 ;;
      5)
      printf '\n0 6 * * * reboot' >> /admin ;
@@ -139,29 +143,33 @@ echo "================================================"
     sleep 5
 
 echo "================================================"
+echo ""
  ;;
        7)
          echo "Exiting..."
+         sleep 5;
          clear;
          exit;
 
 echo "================================================"
+echo ""
  ;;
 
        8)
-         echo "Deleting..."
+         echo "Exiting and Deleting..."
          rm padavan.sh;
+         sleep 5;
          clear;
          exit;
 
 echo "================================================"
+echo ""
 ;;
 
 *)
         echo "Opção inválida!"
 esac
 
-echo ""
 read -p "Press enter to back..."
 
 done
