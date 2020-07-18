@@ -161,6 +161,7 @@ echo "================================================"
         echo "Opção inválida!"
 esac
 
+echo ""
 read -p "Press enter to back..."
 
 done
