@@ -45,7 +45,7 @@ if [ -f "$FILE" ];
 then
 echo -e "4) Stubby - \e[32m Status (on) \e[0m" 
 else 
-echo -e "4) DNSCrypt - \e[31m Status (off) \e[0m"
+echo -e "4) Stubby - \e[31m Status (off) \e[0m"
 fi
 
 echo ""
