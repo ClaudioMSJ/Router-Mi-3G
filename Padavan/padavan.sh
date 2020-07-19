@@ -94,6 +94,7 @@ then
     echo ""
     echo -e "\e[32m Already Installed... \e[0m"
 else 
+    opkg install wget ca-certificates;
     wget -O /opt/tmp/adblock_black.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_black.list ;    
     wget -O /opt/tmp/adblock_update.sh https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_update.sh ;    
     wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_white.list ;
