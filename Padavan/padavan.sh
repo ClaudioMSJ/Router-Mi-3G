@@ -99,8 +99,7 @@ else
     wget -O /opt/tmp/adblock_update.sh https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_update.sh ;    
     wget -O /opt/tmp/adblock_white.list https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdBlock/adblock_white.list ;
     printf '\naddn-hosts=/opt/tmp/block.hosts' >> /etc/storage/dnsmasq/dnsmasq.conf
-    printf '\nchmod +x /opt/tmp/adblock_update.sh
-/opt/tmp/adblock_update.sh' >> /etc/storage/started_script.sh
+    printf '\n0 12 * * sat /opt/tmp/adblock_update.sh' >> /etc/storage/cron/crontabs/admin ;
     chmod +x /opt/tmp/adblock_update.sh ;
     /opt/tmp/adblock_update.sh ;
     fi
