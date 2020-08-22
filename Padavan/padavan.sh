@@ -78,9 +78,9 @@ then
     echo -e "\e[32m Already Installed... \e[0m"
    
 else 
-      wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
-      opkg install adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
-      rm adguardhome_0.102.0-1_mipsel-3.4.ipk ;      
+      wget -q https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/AdGuard%20Home/adguardhome.ipk ;      
+      opkg install adguardhome.ipk ;      
+      rm adguardhome.ipk ;      
       /opt/etc/init.d/S99adguardhome start ;      
       wget -O /etc/storage/dnsmasq/dnsmasq.conf https://github.com/ClaudioMSJ/Router-Mi-3G/raw/master/Padavan/DNSCrypt/dnsmasq.conf ;
 fi       
