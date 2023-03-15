@@ -3,9 +3,9 @@
 # Taken from https://openwrt.org/docs/guide-user/services/dns/dot_dnsmasq_stubby
 # Provided so it's easy to run from command line
 
-# Install packages
+# Install packageshttps://github.com/ClaudioMSJ/Router-Mi-3G/blob/master/Openwrt/stubby.sh
 opkg update
-opkg install dnsmasq stubby
+opkg install stubby
 
 # Enable DNS encryption
 uci -q delete dhcp.@dnsmasq[0].server
