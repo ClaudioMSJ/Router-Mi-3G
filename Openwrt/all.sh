@@ -1,7 +1,6 @@
 #!/bin/sh
 
 opkg update
-sleep 5
 
 ################################################################################
 
@@ -36,7 +35,7 @@ uci commit network
 
 # Install packages
 opkg install curl
-opkg --force-overwrite install gawk grep sed coreutils-sort
+opkg --force-overwrite install gawk grep sed
 
 # Install Simple Adblock
 opkg install simple-adblock luci-app-simple-adblock
@@ -52,18 +51,15 @@ uci commit simple-adblock
 opkg install stubby
 
 # Enable DNS encryption
+/etc/init.d/dnsmasq stop
+uci set dhcp.@dnsmasq[0].noresolv="1"
+uci set dhcp.@dnsmasq[0].localuse="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server="127.0.0.1#5453"
-
-# Enforce DNS encryption for LAN clients
-uci set dhcp.@dnsmasq[0].noresolv="1"
 
 uci commit dhcp
 
 /etc/init.d/dnsmasq restart
-
-# Clear existing stubby config
-while uci -q delete stubby.@resolver[0]; do :; done
 
 # Add resolvers
 uci set stubby.dnsa="resolver"
