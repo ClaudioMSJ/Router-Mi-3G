@@ -2,7 +2,7 @@
 
 opkg update
 
-################################################################################
+###############################################################################
 
 # Disable IPV6
 uci set 'network.lan.ipv6=0'
@@ -56,9 +56,7 @@ uci set dhcp.@dnsmasq[0].noresolv="1"
 uci set dhcp.@dnsmasq[0].localuse="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server="127.0.0.1#5453"
-
 uci commit dhcp
-
 /etc/init.d/dnsmasq restart
 
 # Add resolvers
@@ -74,9 +72,7 @@ uci set stubby.dnsc.tls_auth_name="dns.google"
 uci set stubby.dnsd="resolver"
 uci set stubby.dnsd.address="8.8.4.4"
 uci set stubby.dnsd.tls_auth_name="dns.google"
-
 uci commit stubby
-
 /etc/init.d/stubby restart
 
 # DNS leak test from command line
