@@ -5,7 +5,7 @@ opkg update
 opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
 
 #grab and install AGH
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
+curl -s -S -L curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
 
 # 1. Enable dnsmasq to do PTR requests.
 # 2. Reduce dnsmasq cache size as it will only provide PTR/rDNS info.
