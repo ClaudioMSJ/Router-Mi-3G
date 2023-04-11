@@ -5,7 +5,7 @@ opkg update
 opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
 
 #grab and install AGH
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
+curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
 
 # 1. Enable dnsmasq to do PTR requests.
 # 2. Reduce dnsmasq cache size as it will only provide PTR/rDNS info.
@@ -19,6 +19,7 @@ NET_ADDR=$(/sbin/ip -o -4 addr list br-lan | awk 'NR==1{ split($4, ip_addr, "/")
 NET_ADDR6=$(/sbin/ip -o -6 addr list br-lan scope global | awk 'NR==1{ split($4, ip_addr, "/"); print ip_addr[1] }')
  
 echo "Router IPv4 : ""${NET_ADDR}"
+echo "Router IPv6 : ""${NET_ADDR6}"
 
 uci set dhcp.@dnsmasq[0].noresolv='0'
 uci set dhcp.@dnsmasq[0].cachesize='1000'
@@ -37,6 +38,13 @@ uci add_list dhcp.lan.dhcp_option='6,'"${NET_ADDR}"
 
 #DHCP option 3: default router or last resort gateway for this interface
 uci add_list dhcp.lan.dhcp_option='3,'"${NET_ADDR}"
+
+#Set IPv6 Announced DNS
+for OUTPUT in $(ip -o -6 addr list br-lan scope global | awk '{ split($4, ip_addr, "/"); print ip_addr[1] }')
+do
+	echo "Adding $OUTPUT to IPV6 DNS"
+	uci add_list dhcp.lan.dns=$OUTPUT
+done
 
 # Save changes
 uci commit dhcp
