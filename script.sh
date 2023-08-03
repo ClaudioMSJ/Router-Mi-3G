@@ -54,9 +54,6 @@ uci commit wireless
 sleep 5
 echo
 echo ----- INSTALL ADGUARD HOME -----
-#!/bin/sh
-# Switch to Adguard setup
-# Grab packages for AGH and updates.
 opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
 curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
 NET_ADDR=$(/sbin/ip -o -4 addr list br-lan | awk 'NR==1{ split($4, ip_addr, "/"); print ip_addr[1] }')
@@ -98,6 +95,4 @@ uci add_list network.wan.dns="1.0.0.1"
 # Save changes
 uci commit network
 
-# Restart network service to reflect changes
-/etc/init.d/network restart
 reboot
