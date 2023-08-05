@@ -1,4 +1,6 @@
-#!/usr/bin/env ash
+#!/bin/sh
+
+# OpenWrt After Install
 
 echo ----- UPDATE ALL PACKAGES -----
 #Update All Packages
