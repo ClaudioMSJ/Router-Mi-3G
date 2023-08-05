@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env ash
 
 echo ----- UPDATE ALL PACKAGES -----
 #Update All Packages
