@@ -163,7 +163,7 @@ echo ""
 
        8)
          echo "Exiting and Deleting..."
-         rm padavan.sh;
+         rm /tmp/padavan.sh;
          sleep 5;
          clear;
          exit;
