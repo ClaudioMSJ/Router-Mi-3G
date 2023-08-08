@@ -2,12 +2,6 @@
 
 # OpenWrt After Install
 
-echo ----- UPDATE ALL PACKAGES -----
-opkg update
-opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg install
-
-sleep 5
-echo
 echo ----- DISABLE IPV6 -----
 uci -q delete network.globals.ula_prefix
 uci commit network
