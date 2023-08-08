@@ -495,7 +495,7 @@ unpack() {
 # Entrypoint
 
 # Set default values of configuration variables.
-channel='release'
+channel='edge'
 verbose='0'
 cpu=''
 os=''
