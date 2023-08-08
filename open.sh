@@ -3,7 +3,6 @@
 # OpenWrt After Install
 
 echo ----- UPDATE ALL PACKAGES -----
-#Update All Packages
 opkg update
 opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg install
 
