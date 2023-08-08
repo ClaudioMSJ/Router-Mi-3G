@@ -26,7 +26,7 @@ echo ----- INSTALL ADGUARD HOME -----
 opkg remove dnsmasq odhcpd-ipv6only
 rm /etc/config/dhcp
 opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
+curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
 echo 'Sucess Install AdGuardHome.'
 
 sleep 5
