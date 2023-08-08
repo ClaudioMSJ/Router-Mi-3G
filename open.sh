@@ -16,7 +16,6 @@ uci commit network
 sleep 5
 echo
 echo ----- ENABLE FIREWALL HW -----
-#Firewall
 uci set firewall.cfg01e63d.flow_offloading='1'
 uci set firewall.cfg01e63d.flow_offloading_hw='1'
 uci commit firewall
