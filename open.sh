@@ -5,8 +5,6 @@ opkg update
 sleep 5
 echo
 echo ----- INSTALL ADGUARD HOME -----
-opkg remove dnsmasq odhcpd-ipv6only
-rm /etc/config/dhcp
 opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
 curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
 echo 'Sucess Install AdGuardHome.'
@@ -51,3 +49,9 @@ uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
 uci commit network
+
+sleep 5
+echo
+echo ----- REMOVE DNSMASQ -----
+opkg remove dnsmasq odhcpd-ipv6only
+rm /etc/config/dhcp
