@@ -22,24 +22,17 @@ echo ----- DISABLE IPV6 -----
 uci set 'network.lan.ipv6=0'
 uci set 'network.wan.ipv6=0'
 uci set 'dhcp.lan.dhcpv6=disabled'
-/etc/init.d/odhcpd disable
 uci commit
 
 uci -q delete dhcp.lan.dhcpv6
 uci -q delete dhcp.lan.ra
 uci commit dhcp
-/etc/init.d/odhcpd restart
 
 uci set network.lan.delegate="0"
 uci commit network
-/etc/init.d/network restart
-
-/etc/init.d/odhcpd disable
-/etc/init.d/odhcpd stop
 
 uci -q delete network.globals.ula_prefix
 uci commit network
-/etc/init.d/network restart
 
 sleep 5
 echo
@@ -50,8 +43,6 @@ uci -q delete dhcp.@dnsmasq[0]
 uci set dhcp.lan.dhcpv4="server"
 uci set dhcp.odhcpd.maindhcp="1"
 uci commit dhcp
-/etc/init.d/odhcpd restart
-reboot
 
 sleep 5
 echo
@@ -61,3 +52,4 @@ uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
 uci commit network
+reboot
