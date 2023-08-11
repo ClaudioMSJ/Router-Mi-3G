@@ -1,5 +1,5 @@
 #!/bin/sh
-echo ----- OPKG UPDATE -----
+echo ----- UPDATE -----
 opkg update
 
 sleep 5
@@ -54,4 +54,10 @@ sleep 5
 echo
 echo ----- REMOVE DNSMASQ -----
 opkg remove dnsmasq odhcpd-ipv6only
-rm /etc/config/dhcp
+opkg install odhcpd
+uci -q delete dhcp.@dnsmasq[0]
+uci set dhcp.lan.dhcpv4="server"
+uci set dhcp.odhcpd.maindhcp="1"
+uci commit dhcp
+/etc/init.d/odhcpd restart
+reboot
