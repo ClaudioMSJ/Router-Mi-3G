@@ -1,4 +1,17 @@
 #!/bin/sh
+
+sleep 5
+echo
+echo ----- TIMEZONE SÃO PAULO -----
+uci del system.ntp.enabled
+uci del system.ntp.enable_server
+uci set system.cfg01e48a.zonename='America/Sao Paulo'
+uci set system.cfg01e48a.timezone='<-03>3'
+uci set system.cfg01e48a.log_proto='udp'
+uci set system.cfg01e48a.conloglevel='8'
+uci set system.cfg01e48a.cronloglevel='5'
+uci commit system
+
 echo ----- UPDATE -----
 opkg update
 
