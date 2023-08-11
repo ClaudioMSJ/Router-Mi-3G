@@ -11,6 +11,13 @@ echo 'Sucess Install AdGuardHome.'
 
 sleep 5
 echo
+echo ----- ENABLE FIREWALL HW -----
+uci set firewall.cfg01e63d.flow_offloading='1'
+uci set firewall.cfg01e63d.flow_offloading_hw='1'
+uci commit firewall
+
+sleep 5
+echo
 echo ----- DISABLE IPV6 -----
 uci set 'network.lan.ipv6=0'
 uci set 'network.wan.ipv6=0'
@@ -36,22 +43,6 @@ uci commit network
 
 sleep 5
 echo
-echo ----- ENABLE FIREWALL HW -----
-uci set firewall.cfg01e63d.flow_offloading='1'
-uci set firewall.cfg01e63d.flow_offloading_hw='1'
-uci commit firewall
-
-sleep 5
-echo
-echo ----- SET CLOUDFLARE WAN DNS -----
-uci set network.wan.peerdns="0"
-uci -q delete network.wan.dns
-uci add_list network.wan.dns="1.1.1.1"
-uci add_list network.wan.dns="1.0.0.1"
-uci commit network
-
-sleep 5
-echo
 echo ----- REMOVE DNSMASQ -----
 opkg remove dnsmasq odhcpd-ipv6only
 opkg install odhcpd
@@ -61,3 +52,12 @@ uci set dhcp.odhcpd.maindhcp="1"
 uci commit dhcp
 /etc/init.d/odhcpd restart
 reboot
+
+sleep 5
+echo
+echo ----- SET CLOUDFLARE WAN DNS -----
+uci set network.wan.peerdns="0"
+uci -q delete network.wan.dns
+uci add_list network.wan.dns="1.1.1.1"
+uci add_list network.wan.dns="1.0.0.1"
+uci commit network
