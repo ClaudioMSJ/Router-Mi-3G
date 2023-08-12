@@ -12,6 +12,13 @@ uci set system.cfg01e48a.conloglevel='8'
 uci set system.cfg01e48a.cronloglevel='5'
 uci commit system
 
+sleep 5
+echo
+echo ----- TASK REBOOT -----
+/etc/init.d/cron enable
+echo '00 06 * * * reboot' >> /etc/crontabs/root
+/etc/init.d/cron start
+
 echo ----- UPDATE -----
 opkg update
 
