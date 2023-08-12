@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sleep 5
 echo
 echo ----- TIMEZONE SÃO PAULO -----
 uci del system.ntp.enabled
