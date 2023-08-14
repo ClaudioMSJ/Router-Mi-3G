@@ -5,20 +5,6 @@ opkg update
 
 sleep 5
 echo
-echo ----- INSTALL ADGUARD HOME -----
-opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
-echo 'Sucess Install AdGuardHome.'
-
-sleep 5
-echo
-echo ----- ENABLE FIREWALL HW -----
-uci set firewall.cfg01e63d.flow_offloading='1'
-uci set firewall.cfg01e63d.flow_offloading_hw='1'
-uci commit firewall
-
-sleep 5
-echo
 echo ----- DISABLE IPV6 -----
 uci set 'network.lan.ipv6=0'
 uci set 'network.wan.ipv6=0'
@@ -39,6 +25,20 @@ sleep 5
 echo
 echo ----- REMOVE DNSMASQ -----
 opkg remove dnsmasq odhcpd odhcpd-ipv6only
+
+sleep 5
+echo
+echo ----- ENABLE FIREWALL HW -----
+uci set firewall.cfg01e63d.flow_offloading='1'
+uci set firewall.cfg01e63d.flow_offloading_hw='1'
+uci commit firewall
+
+sleep 5
+echo
+echo ----- INSTALL ADGUARD HOME -----
+opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
+curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
+echo 'Sucess Install AdGuardHome.'
 
 sleep 5
 echo
