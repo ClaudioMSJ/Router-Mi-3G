@@ -1,8 +1,7 @@
 #!/bin/sh
 
-opk update
+opkg update
 
-sleep 5
 uci set 'network.lan.ipv6=0'
 uci set 'network.wan.ipv6=0'
 uci set 'dhcp.lan.dhcpv6=disabled'
@@ -26,7 +25,6 @@ uci set dhcp.odhcpd.maindhcp="1"
 uci commit dhcp
 /etc/init.d/odhcpd restart
 
-sleep 5
 opkg install unbound-control unbound-daemon
 uci set unbound.@unbound[0].add_local_fqdn="3"
 uci set unbound.@unbound[0].add_wan_fqdn="1"
@@ -42,7 +40,6 @@ uci set dhcp.odhcpd.leasetrigger="/usr/lib/unbound/odhcpd.sh"
 uci commit dhcp
 /etc/init.d/odhcpd restart
 
-sleep 5
 opkg install luci-app-adblock
 uci set adblock.global.adb_enabled="1" 
 uci set adblock.global.adb_backupdir="/etc/adblock"
@@ -50,13 +47,10 @@ echo "googleadservices.com" > /etc/adblock/adblock.whitelist
 uci commit adblock
 /etc/init.d/adblock restart
 
-sleep 5
 uci set firewall.cfg01e63d.flow_offloading='1'
 uci set firewall.cfg01e63d.flow_offloading_hw='1'
 uci commit firewall
 
-sleep 5
 opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg install
 
-sleep 5
 reboot
