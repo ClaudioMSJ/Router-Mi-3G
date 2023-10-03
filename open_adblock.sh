@@ -44,6 +44,7 @@ opkg install luci-app-adblock
 uci set adblock.global.adb_enabled="1" 
 uci set adblock.global.adb_backupdir="/etc/adblock"
 echo "googleadservices.com" > /etc/adblock/adblock.whitelist
+uci set adblock.global.adb_triggerdelay='30'
 uci commit adblock
 /etc/init.d/adblock restart
 
