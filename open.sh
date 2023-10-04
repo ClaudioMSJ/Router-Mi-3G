@@ -36,8 +36,7 @@ uci commit firewall
 sleep 5
 echo
 echo ----- INSTALL ADGUARD HOME -----
-opkg install sudo ca-certificates ca-bundle curl wget wget-ssl tar unzip bind-tools
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -c edge
+wget --no-verbose -O - https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
 echo 'Sucess Install AdGuardHome.'
 
 sleep 5
