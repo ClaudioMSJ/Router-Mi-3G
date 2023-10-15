@@ -37,6 +37,7 @@ sleep 5
 echo
 echo ----- INSTALL ADGUARD HOME -----
 opkg install curl
+opkg install sudo
 curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
 echo 'Sucess Install AdGuardHome.'
 
