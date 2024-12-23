@@ -32,6 +32,8 @@ uci set network.wan.peerdns="0"
 uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
+uci add_list network.wan.dns="8.8.8.8"
+uci add_list network.wan.dns="8.8.4.4"
 
 # Camera GI - IP Fixo
 uci add dhcp host
