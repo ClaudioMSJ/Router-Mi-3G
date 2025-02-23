@@ -49,8 +49,8 @@ uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
 uci set https-dns-proxy.dns.listen_port="5053"
 
 #Adblock Lean
-uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/main/adblock-lean -O /etc/init.d/adblock-lean
-sh /etc/init.d/adblock-lean setup
+uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
+sh /tmp/abl-install.sh
 
 # Salvar Configs
 uci commit
