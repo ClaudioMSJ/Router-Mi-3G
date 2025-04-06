@@ -33,13 +33,6 @@ uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
 
-# Camera GI - IP Fixo
-uci add dhcp host
-uci set dhcp.@host[-1].name="CameraGi"
-uci set dhcp.@host[-1].dns='1'
-uci set dhcp.@host[-1].mac="40:ED:00:28:25:3E"
-uci set dhcp.@host[-1].ip="192.168.1.250"
-
 # DNS Cloudflare
 while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
 uci set https-dns-proxy.dns="https-dns-proxy"
