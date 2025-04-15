@@ -32,21 +32,12 @@ uci set network.wan.peerdns="0"
 uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
-
-# DNS Cloudflare
-while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
-uci set https-dns-proxy.dns="https-dns-proxy"
-uci set https-dns-proxy.dns.bootstrap_dns="1.1.1.1,1.0.0.1"
-uci set https-dns-proxy.dns.resolver_url="https://cloudflare-dns.com/dns-query"
-uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
-uci set https-dns-proxy.dns.listen_port="5053"
+uci add_list network.wan.dns="8.8.8.8"
+uci add_list network.wan.dns="8.8.4.4"
 
 #Adblock Lean
 uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
 sh /tmp/abl-install.sh
-
-# Salvar Configs
-uci commit
 
 # Ao Iniciar
 rm /etc/rc.local
@@ -62,5 +53,8 @@ done
 service adblock-lean restart
 echo "Adblock Service Manually Reloaded"' >> /root/adblock.sh
 chmod +x /root/adblock.sh
+
+# Salvar Configs
+uci commit
 
 reboot
