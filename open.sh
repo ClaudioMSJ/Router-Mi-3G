@@ -32,8 +32,14 @@ uci set network.wan.peerdns="0"
 uci -q delete network.wan.dns
 uci add_list network.wan.dns="1.1.1.1"
 uci add_list network.wan.dns="1.0.0.1"
-uci add_list network.wan.dns="8.8.8.8"
-uci add_list network.wan.dns="8.8.4.4"
+
+#DOH Provider
+while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
+uci set https-dns-proxy.dns="https-dns-proxy"
+uci set https-dns-proxy.dns.bootstrap_dns="1.1.1.1,1.0.0.1"
+uci set https-dns-proxy.dns.resolver_url="https://dns.cloudflare.com/dns-query"
+uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
+uci set https-dns-proxy.dns.listen_port="5053"
 
 #Adblock Lean
 uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
