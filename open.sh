@@ -48,7 +48,6 @@ sh /tmp/abl-install.sh
 # Ao Iniciar
 rm /etc/rc.local
 echo 'sleep 30 && sh /root/adblock.sh
-sleep 120 && sync | echo 3 > /proc/sys/vm/drop_caches
 exit 0' >> /etc/rc.local
 
 echo '#!/bin/bash
