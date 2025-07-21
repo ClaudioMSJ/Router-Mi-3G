@@ -32,11 +32,6 @@ uci set network.wan.peerdns='0'
 # uci set network.wan.dns='1.1.1.1 1.0.0.1'
 
 # DOH Configs
-uci set dhcp.@dnsmasq[0].noresolv='1'
-uci set dhcp.@dnsmasq[0].strictorder='1'
-uci -q delete dhcp.@dnsmasq[0].server
-uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
-
 uci -q delete https-dns-proxy.@https-dns-proxy[0]
 uci set https-dns-proxy.cloudflare_doh="https-dns-proxy"
 uci set https-dns-proxy.cloudflare_doh.listen_addr="127.0.0.1"
@@ -46,6 +41,11 @@ uci add_list https-dns-proxy.cloudflare_doh.resolver_url="https://1.1.1.1/dns-qu
 uci set https-dns-proxy.cloudflare_doh.bootstrap_dns="1.1.1.1,1.0.0.1"
 uci set https-dns-proxy.cloudflare_doh.force_dns='1'
 uci set https-dns-proxy.cloudflare_doh.enabled='1'
+
+uci set dhcp.@dnsmasq[0].noresolv='1'
+uci set dhcp.@dnsmasq[0].strictorder='1'
+uci -q delete dhcp.@dnsmasq[0].server
+uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
 #Adblock Lean
 uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
