@@ -43,7 +43,7 @@ uci set https-dns-proxy.dns.listen_port="5053"
 
 #Adblock Lean
 uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
-sh /tmp/abl-install.sh
+sh /tmp/abl-install.sh -v release
 
 # Ao Iniciar
 rm /etc/rc.local
