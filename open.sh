@@ -29,7 +29,9 @@ uci set firewall.@rule[1].enabled=0
 
 # Desabilitar DNS ISP
 uci set network.wan.peerdns='0'
-uci set network.wan.dns='1.1.1.1 1.0.0.1'
+uci -q delete network.wan.dns
+uci add_list network.wan.dns="1.1.1.1"
+uci add_list network.wan.dns="1.0.0.1"
 
 # DOH Configs
 while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
