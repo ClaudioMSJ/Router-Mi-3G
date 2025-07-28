@@ -69,9 +69,10 @@ service cron restart
 
 # Ao Iniciar
 rm /etc/rc.local
-echo 'sleep 30 && sh /root/adblock.sh
+echo 'sleep 300 && echo 3 > /proc/sys/vm/drop_caches
 exit 0' >> /etc/rc.local
 
+# Script Adblock Start
 echo '#!/bin/bash
 while ! ping -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
     echo "Waiting for 8.8.8.8 - network interface might be down..."
