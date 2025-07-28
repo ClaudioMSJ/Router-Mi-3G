@@ -59,12 +59,13 @@ uci set firewall.dns_int.src_dport="53"
 uci set firewall.dns_int.dest_port="5053" # Port your DoH proxy is listening on
 uci set firewall.dns_int.target="DNAT"
 
-# Drops Cache Auto
-echo 0 4 * * * echo 3 > /proc/sys/vm/drop_caches >> /etc/crontabs/root
-
 #Adblock Lean
 uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/abl-install.sh -O /tmp/abl-install.sh
 sh /tmp/abl-install.sh -v release
+
+# Drops Cache Auto
+echo 0 4 * * * echo 3 > /proc/sys/vm/drop_caches >> /etc/crontabs/root
+service cron restart
 
 # Ao Iniciar
 rm /etc/rc.local
