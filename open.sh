@@ -64,7 +64,7 @@ uclient-fetch https://raw.githubusercontent.com/lynxthecat/adblock-lean/master/a
 sh /tmp/abl-install.sh -v release
 
 # Drops Cache Auto
-echo 0 4 * * * echo 3 > /proc/sys/vm/drop_caches >> /etc/crontabs/root
+echo '0 6 * * * echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/root
 service cron restart
 
 # Ao Iniciar
