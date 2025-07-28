@@ -69,7 +69,8 @@ service cron restart
 
 # Ao Iniciar
 rm /etc/rc.local
-echo 'sleep 300 && echo 3 > /proc/sys/vm/drop_caches
+echo 'sleep 30 && sh adblock.sh
+sleep 300 && echo 3 > /proc/sys/vm/drop_caches
 exit 0' >> /etc/rc.local
 
 # Script Adblock Start
