@@ -29,26 +29,20 @@ uci set firewall.@rule[1].enabled=0
 
 # Desabilitar DNS ISP
 uci set network.wan.peerdns='0'
-uci -q delete network.wan.dns
-uci add_list network.wan.dns='127.0.0.1'
-
-# Dnsmasq Disable
-uci set dhcp.@dnsmasq[0].port='0'
 
 # Unbound Configs
 uci set unbound.@unbound[0].enabled='1'
 uci set unbound.@unbound[0].listen_port='53'
-uci set unbound.@unbound[0].validator='1'
-uci set unbound.@unbound[0].query_minimize='1'
-while uci -q del unbound.@zone[0]; do :; done
-uci add unbound zone
-uci set unbound.@zone[-1].enabled='1'
-uci set unbound.@zone[-1].zone_type='forward_zone'
-uci add_list unbound.@zone[-1].zone_name='.'
-uci set unbound.@zone[-1].tls_upstream='1'
-uci set unbound.@zone[-1].tls_index='cloudflare-dns.com'
-uci add_list unbound.@zone[-1].server='1.1.1.1'
-uci add_list unbound.@zone[-1].server='1.0.0.1'
+uci set unbound.@unbound[0].add_local_fqdn="3"
+uci set unbound.@unbound[0].add_wan_fqdn="1"
+uci set unbound.@unbound[0].dhcp_link="odhcpd"
+uci set unbound.@unbound[0].unbound_control="1"
+uci set dhcp.odhcpd.leasefile="/var/lib/odhcpd/dhcp.leases"
+uci set dhcp.odhcpd.leasetrigger="/usr/lib/unbound/odhcpd.sh"
+uci set unbound.fwd_google.enabled="0"
+uci set unbound.fwd_cloudflare.enabled="1"
+uci set unbound.fwd_cloudflare.fallback="0"
+uci set unbound.@unbound[0].validator="1"
 
 # AdBlock Configs
 uci set adblock.global.adb_enabled='1'
