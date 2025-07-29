@@ -36,6 +36,7 @@ uci set unbound.@unbound[0].listen_port='53'
 uci set unbound.@unbound[0].add_local_fqdn="3"
 uci set unbound.@unbound[0].add_wan_fqdn="1"
 uci set unbound.@unbound[0].dhcp_link="odhcpd"
+uci set unbound.@unbound[0].dhcp4_slaac6="1"
 uci set unbound.@unbound[0].unbound_control="1"
 uci set dhcp.odhcpd.leasefile="/var/lib/odhcpd/dhcp.leases"
 uci set dhcp.odhcpd.leasetrigger="/usr/lib/unbound/odhcpd.sh"
