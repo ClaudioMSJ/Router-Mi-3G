@@ -38,7 +38,6 @@ uci set https-dns-proxy.dns.resolver_url="https://cloudflare-dns.com/dns-query"
 uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
 uci set https-dns-proxy.dns.listen_port="5053"
 uci set https-dns-proxy.@https-dns-proxy[-1].force_dns='1'
-uci set https-dns-proxy.@https-dns-proxy[-1].enabled='1'
 
 # Dnsmasq Config
 uci set dhcp.@dnsmasq[0].noresolv="1"
