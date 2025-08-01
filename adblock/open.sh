@@ -70,8 +70,10 @@ while ! ping -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
     echo "Waiting for 8.8.8.8 - network interface might be down..."
     sleep 10
 done
-sh /root/adblock.sh' >> /root/ping.sh
-chmod +x /root/ping.sh
+curl -k https://raw.githubusercontent.com/hagezi/dns-blocklists/main/dnsmasq/pro.txt -o /etc/dnsmasq.conf   2>/dev/null ; echo ok 
+uci commit dhcp
+/etc/init.d/dnsmasq restart ' >> /root/adblock.sh
+chmod +x /root/adblock.sh
 
 # Drops Cache Auto
 echo '0 6 * * * echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/root
