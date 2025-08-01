@@ -44,9 +44,6 @@ uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
-# Script Adblock
-wget -q https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/refs/heads/master/adblock/adblock.sh && chmod +x /root/adblock.sh
-
 # DNS Firewall Rule
 uci -q del firewall.dns_int
 uci set firewall.dns_int="redirect"
