@@ -77,7 +77,7 @@ chmod +x /root/adblock.sh
 
 # Drops Cache Auto
 echo '0 6 * * * echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/root
-echo '0 5 * * * sh /root/ping.sh' >> /etc/crontabs/root
+echo '0 5 * * * sh /root/adblock.sh' >> /etc/crontabs/root
 service cron restart
 
 # Salvar Configs
