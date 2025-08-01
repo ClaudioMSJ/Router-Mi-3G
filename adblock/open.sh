@@ -44,12 +44,7 @@ uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
-# Adblock
-curl -k https://raw.githubusercontent.com/hagezi/dns-blocklists/main/dnsmasq/pro.mini.txt -o /etc/adblock_hosts  2>/dev/null ; echo ok
-curl -k https://raw.githubusercontent.com/hagezi/dns-blocklists/main/dnsmasq/pro.mini.txt -o /etc/dnsmasq.conf   2>/dev/null ; echo ok
-uci set dhcp.@dnsmasq[0].addnhosts='/tmp/adblock_hosts'
-
-# Download Script Adblock
+# Script Adblock
 wget -q https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/refs/heads/master/adblock/adblock.sh && chmod +x /root/adblock.sh
 
 # DNS Firewall Rule
