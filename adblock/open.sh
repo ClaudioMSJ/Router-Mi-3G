@@ -68,7 +68,7 @@ while ! ping -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
     echo "Waiting for 8.8.8.8 - network interface might be down..."
     sleep 10
 done
-wget -q https://raw.githubusercontent.com/hagezi/dns-blocklists/main/dnsmasq/pro.txt -O /etc/dnsmasq.conf
+wget -q https://raw.githubusercontent.com/hagezi/dns-blocklists/main/dnsmasq/light.txt -O /etc/dnsmasq.conf
 uci commit dhcp
 /etc/init.d/dnsmasq restart ' >> /root/adblock.sh
 chmod +x /root/adblock.sh
