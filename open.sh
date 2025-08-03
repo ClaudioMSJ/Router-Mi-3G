@@ -74,7 +74,6 @@ exit 0' >> /etc/rc.local
 echo '#!/bin/bash
 while ! ping -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
     echo "Waiting for 8.8.8.8 - network interface might be down..."
-    sleep 10
 done
 service adblock-lean restart
 echo "Adblock Service Manually Reloaded"' >> /root/adblock.sh
