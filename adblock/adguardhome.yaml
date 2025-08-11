@@ -2,7 +2,7 @@ http:
   pprof:
     port: 6060
     enabled: false
-  address: 192.168.1.7:8080
+  address: 192.168.1.1:8080
   session_ttl: 720h
 users:
   - name: root
@@ -14,7 +14,7 @@ language: ""
 theme: auto
 dns:
   bind_hosts:
-    - 192.168.1.7
+    - 192.168.1.1
   port: 53
   anonymize_client_ip: false
   ratelimit: 0
