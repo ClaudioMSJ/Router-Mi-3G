@@ -2,7 +2,7 @@ http:
   pprof:
     port: 6060
     enabled: false
-  address: 192.168.1.7:8080
+  address: 192.168.1.1:8080
   session_ttl: 720h
 users:
   - name: root
@@ -14,7 +14,7 @@ language: ""
 theme: auto
 dns:
   bind_hosts:
-    - 192.168.1.7
+    - 192.168.1.1
   port: 53
   anonymize_client_ip: false
   ratelimit: 0
@@ -109,7 +109,7 @@ dhcp:
   interface_name: br-lan
   local_domain_name: lan
   dhcpv4:
-    gateway_ip: 192.168.1.7
+    gateway_ip: 192.168.1.1
     subnet_mask: 255.255.255.0
     range_start: 192.168.1.10
     range_end: 192.168.1.50
