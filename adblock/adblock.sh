@@ -47,11 +47,6 @@ EOF
 
 chmod +x "$OISD_INIT"
 
-echo "[*] Configurando atualização semanal via cron..."
-grep -q 'adblock update' /etc/crontabs/root || \
-    echo '0 4 * * 1 /etc/init.d/adblock update' >> /etc/crontabs/root
-/etc/init.d/cron restart
-
 echo "[*] Ativando script..."
 $OISD_INIT enable
 $OISD_INIT start
