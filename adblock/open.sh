@@ -32,18 +32,17 @@ uci set network.wan.peerdns='0'
 uci add_list network.wan.dns='127.0.0.1'
 
 # Configura https-dns-proxy para Cloudflare DoH
-uci -q delete https-dns-proxy.config
-uci set https-dns-proxy.config=main
-uci set https-dns-proxy.config.enabled='1'
-uci set https-dns-proxy.config.listen_addr='127.0.0.1'
-uci set https-dns-proxy.config.listen_port='5053'
-uci set https-dns-proxy.config.bootstrap_dns='1.1.1.1,1.0.0.1'
-uci set https-dns-proxy.config.resolver_url='https://cloudflare-dns.com/dns-query'
-uci set https-dns-proxy.config.user='nobody'
-uci set https-dns-proxy.config.group='nogroup'
-uci set https-dns-proxy.config.quiet='0'
+while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
+uci set https-dns-proxy.dns="https-dns-proxy"
+uci set https-dns-proxy.dns.bootstrap_dns="1.1.1.1,1.0.0.1"
+uci set https-dns-proxy.dns.resolver_url="https://cloudflare-dns.com/dns-query"
+uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
+uci set https-dns-proxy.dns.listen_port="5053"
+uci set https-dns-proxy.@https-dns-proxy[-1].force_dns='1'
 
 # Dnsmasq Config
+uci set dhcp.@dnsmasq[0].min_cache_ttl=3600
+uci set dhcp.@dnsmasq[0].max_cache_ttl=86400
 uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
