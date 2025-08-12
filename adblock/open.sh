@@ -47,16 +47,14 @@ uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
-# DNS Firewall Rule
-uci -q del firewall.dns_int
-uci set firewall.dns_int="redirect"
-uci set firewall.dns_int.name="Intercept-DNS"
-uci set firewall.dns_int.family="any"
-uci set firewall.dns_int.proto="tcp udp"
-uci set firewall.dns_int.src="lan"
-uci set firewall.dns_int.src_dport="53"
-uci set firewall.dns_int.dest_port="5053"
-uci set firewall.dns_int.target="DNAT"
+# Bloqueio DNS direto (porta 53)
+uci add firewall rule
+uci set firewall.@rule[-1].name='Block-DNS-Direct'
+uci set firewall.@rule[-1].src='lan'
+uci set firewall.@rule[-1].dest='wan'
+uci set firewall.@rule[-1].proto='tcp udp'
+uci set firewall.@rule[-1].dest_port='53'
+uci set firewall.@rule[-1].target='REJECT'
 
 # Ao Iniciar
 rm /etc/rc.local
