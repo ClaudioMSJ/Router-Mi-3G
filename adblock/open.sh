@@ -39,13 +39,15 @@ uci set https-dns-proxy.dns.resolver_url="https://cloudflare-dns.com/dns-query"
 uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
 uci set https-dns-proxy.dns.listen_port="5053"
 uci set https-dns-proxy.@https-dns-proxy[-1].force_dns='1'
+uci set dhcp.@dnsmasq[0].noresolv='1'
+uci -q delete dhcp.@dnsmasq[0].server
+uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
 # Dnsmasq Config
 uci set dhcp.@dnsmasq[0].cachelocal='1'        # Mantém cache local
 uci set dhcp.@dnsmasq[0].cachesize='1000'      # Aumenta cache
 uci set dhcp.@dnsmasq[0].dnsforwardmax='500'   # Mais consultas simultâneas
 uci set dhcp.@dnsmasq[0].allservers='1'        # Usa todos DNS em paralelo
-uci set dhcp.@dnsmasq[0].noresolv='1'          # Ignora /etc/resolv.conf
 uci set dhcp.@dnsmasq[0].localservice='1'      # Restringe consultas ao LAN
 uci set dhcp.@dnsmasq[0].quietdhcp='1'         # Menos log DHCP
 uci set dhcp.@dnsmasq[0].quietdhcp6='1'        # Menos log DHCPv6
@@ -54,8 +56,6 @@ uci set dhcp.@dnsmasq[0].filteraaaa='1'
 uci set dhcp.@dnsmasq[0].dhcpv6='disabled'
 uci set dhcp.lan.ra='disabled'
 uci set dhcp.lan.dhcpv6='disabled'
-uci -q delete dhcp.@dnsmasq[0].server
-uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
 
 # Bloqueio DNS direto (porta 53)
 uci add firewall rule
