@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Desabilitar IPV6
-uci set 'network.lan.ipv6=0'
-uci set 'network.wan.ipv6=0'
-uci set 'dhcp.lan.dhcpv6=disabled'
-uci -q delete dhcp.lan.dhcpv6
-uci -q delete dhcp.lan.ra
-uci set network.lan.delegate="0"
-uci -q delete network.globals.ula_prefix
+uci set network.lan.ipv6='0'
+uci set network.wan.ipv6='0'
+uci set network.wan6=' '
+uci set dhcp.lan.dhcpv6='disabled'
+uci set dhcp.lan.ra='disabled'
+uci set dhcp.lan.ndp='disabled'
+uci set firewall.@defaults[0].disable_ipv6='1'
 
 # Desabilitar Led Azul
 uci add system led
