@@ -16,9 +16,11 @@ uci set system.@led[-1].sysfs='blue:status'
 uci set system.@led[-1].trigger='none'
 uci set system.@led[-1].default='0'
 
-# Horário
+# Horário e Log
 uci set system.@system[0].zonename='America/Sao Paulo'
 uci set system.@system[0].timezone='<-03>3'
+uci set system.@system[0].log_size='16'
+uci set system.@system[0].log_rotated='3'
 
 # Ativar Hardware e Software Offloading
 uci set firewall.@defaults[0].flow_offloading='1'
