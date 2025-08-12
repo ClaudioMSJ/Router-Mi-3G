@@ -51,4 +51,4 @@ echo "[*] Ativando script..."
 $OISD_INIT enable
 $OISD_INIT start
 
-echo "[✓] OISD small instalado e atualização semanal configurada."
+echo "[✓] OISD small instalado."
