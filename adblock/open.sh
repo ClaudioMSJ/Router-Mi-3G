@@ -44,8 +44,6 @@ uci set https-dns-proxy.config.group='nogroup'
 uci set https-dns-proxy.config.quiet='0'
 
 # Dnsmasq Config
-uci set dhcp.@dnsmasq[0].min_cache_ttl=3600
-uci set dhcp.@dnsmasq[0].max_cache_ttl=86400
 uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
