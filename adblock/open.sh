@@ -41,6 +41,8 @@ uci set https-dns-proxy.dns.listen_port="5053"
 uci set https-dns-proxy.@https-dns-proxy[-1].force_dns='1'
 
 # Dnsmasq Config
+uci set dhcp.@dnsmasq[0].min_cache_ttl=3600
+uci set dhcp.@dnsmasq[0].max_cache_ttl=86400
 uci set dhcp.@dnsmasq[0].noresolv="1"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
