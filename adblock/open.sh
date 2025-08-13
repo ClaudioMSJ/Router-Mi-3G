@@ -70,7 +70,7 @@ uci set firewall.@rule[-1].target='REJECT'
 
 # Ao Iniciar
 rm /etc/rc.local
-echo 'sleep 30 && sh /root/adblock.sh
+echo 'sleep 30 && sync && sh /root/adblock.sh
 sleep 300 && echo 3 > /proc/sys/vm/drop_caches
 exit 0' >> /etc/rc.local
 
@@ -84,7 +84,7 @@ wget -q https://raw.githubusercontent.com/sjhgvr/oisd/refs/heads/main/dnsmasq_sm
 chmod +x /root/adblock.sh
 
 # Drops Cache Auto
-echo '0 6 * * * echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/root
+echo '0 6 * * * sync && echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/root
 echo '0 5 * * * sh /root/adblock.sh' >> /etc/crontabs/root
 service cron restart
 
