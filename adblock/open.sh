@@ -31,7 +31,7 @@ uci set firewall.@rule[1].enabled=0
 
 # Desabilitar DNS ISP
 uci set network.wan.peerdns='0'
-uci add_list network.wan.dns='127.0.0.1'
+uci set network.wan.dns='127.0.0.1'
 
 # Configura https-dns-proxy para Cloudflare DoH
 while uci -q delete https-dns-proxy.@https-dns-proxy[0]; do :; done
