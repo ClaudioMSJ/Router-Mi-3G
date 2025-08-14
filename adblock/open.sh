@@ -65,13 +65,11 @@ sleep 300 && echo 3 > /proc/sys/vm/drop_caches
 exit 0' >> /etc/rc.local
 
 # Script Adblock Start
-cat << 'EOF' > /root/adblock.sh
-#!/bin/bash
-while ! ping -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
-    echo "Waiting for 8.8.8.8 - network interface might be down..."
-done
-wget -q https://raw.githubusercontent.com/sjhgvr/oisd/refs/heads/main/dnsmasq_small.txt -O /etc/dnsmasq.conf
-sed -i '/^[[:space:]]*#/d;/^[[:space:]]*$/d' /etc/dnsmasq.conf
+cat << 'EOF' >  /root/adblock.sh
+#!/bin/sh
+URL="https://raw.githubusercontent.com/sjhgvr/oisd/refs/heads/main/dnsmasq_small.txt"
+until ping -c1 -W1 8.8.8.8 >/dev/null 2>&1; do sleep 1; done
+wget -q "$URL" -O - | sed '/^[[:space:]]*#/d;/^[[:space:]]*$/d' > /etc/dnsmasq.conf
 /etc/init.d/dnsmasq restart
 EOF
 chmod +x /root/adblock.sh
