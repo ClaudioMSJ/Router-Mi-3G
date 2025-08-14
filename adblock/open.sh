@@ -40,11 +40,11 @@ uci set https-dns-proxy.dns.bootstrap_dns="1.1.1.1,1.0.0.1"
 uci set https-dns-proxy.dns.resolver_url="https://cloudflare-dns.com/dns-query"
 uci set https-dns-proxy.dns.listen_addr="127.0.0.1"
 uci set https-dns-proxy.dns.listen_port="5053"
+
+# Dnsmasq Config
 uci set dhcp.@dnsmasq[0].noresolv='1'
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server='127.0.0.1#5053'
-
-# Dnsmasq Config
 uci set dhcp.@dnsmasq[0].dhcpv6='disabled'
 uci set dhcp.lan.ra='disabled'
 uci set dhcp.lan.dhcpv6='disabled'
