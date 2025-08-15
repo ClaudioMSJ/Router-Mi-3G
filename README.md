@@ -8,3 +8,4 @@ wget -q https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/open.sh
 
 # UPDATE ADGUARDHOME
 curl -s -L https://raw.githubusercontent.com/ClaudioMSJ/Router-Mi-3G/master/update_adguard.sh | sh
+st.button("📋 Copy Chat", on_click=copy_conversation)
